@@ -1,19 +1,21 @@
 <?php
 
-if (isset($_POST['submit'])) {
-  $name = $_POST['name'];
-  $mailForm = $_POST['mail'];
-  $subjectForm = $_POST['subject'];
-  $message = $_POST['message'];
+echo "<pre>";
 
-  $mailTo = "hasnainrazaa03@gmail.com";
-  $headers = "From: ".$mailFrom;
-  $txt = "You have a message ".$message;
+print_r($_POST);
+echo "<pre>";
+$userName = $_POST['name'];
+$userEmail = $_POST['email'];
+$messageSubject = $_POST['subject'];
+$message = $_POST['message'];
 
-  mail($mailTo, $name, $txt, $subjectForm, $headers);
+$to = "hasnainrazaa03@gmail.com";
+$body = "";
 
-  header("Location: index.html?MessageSent");
+$body .= "From: ".$userName. "\r\n";
+$body .= "Email: ".$userEmail. "\r\n";
+$body .= "Message: ".$message. "\r\n";
 
-}
+mail($to, $messageSubject, $body);
 
 ?>
